@@ -223,6 +223,16 @@ border: 1px solid rgba(201, 198, 198, 0.44);
     font-weight: bold;
 }
 
+/* Ville */
+
+.vide2{
+    align-items: center;
+    justify-content: center;
+}
+.vide2 p{
+    font-size: 32px;
+}
+
 /* boussole */
 
 

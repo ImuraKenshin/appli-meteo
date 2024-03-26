@@ -1,6 +1,3 @@
-
-
-
                                                     // dayTime
 
 // la fonction affiche la date et l'heure
@@ -33,28 +30,6 @@ function jourNuit(){
         }
 }
 jourNuit()
-
-                                                    // liste des fonctions via le lien API
-
-fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=weather_code,temperature_2m,precipitation,is_day,snowfall,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=weather_code,temperature_2m,rain,cloud_cover,wind_speed_80m,wind_direction_80m,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,snowfall_sum&timezone=auto")
-.then(data =>{
-    return data.json()
-})
-.then(weather =>{
-    // temps en direct
-    background(weather.current.weather_code)
-    tempsDuJour(weather.current.weather_code)
-    temperatureDuJour(weather.current.temperature_2m)
-    directionVent(weather.current.wind_direction_10m)
-    vitesseVent(weather.current.wind_speed_10m)
-
-    // temps par heure
-    tempsParHeure(weather.hourly)
-
-    // temps pour les 6 prochains jours
-    dailyPicto(weather.daily.weather_code)
-    tempsParJour(weather.daily)
-})
 
 // background dynamique
 function background(code){
@@ -182,4 +157,57 @@ function tempsParJour(codes){
             <p class="dayTempMin">${tempMin}°C</p>
             </div>`      
         }
+}
+
+//GEOLOC
+// La méthode Geolocation.getCurrentPosition() fournit la position actuelle de l'appareil.
+// on applique la methode sur le navigateur qui prend la fonction position comme argument
+navigator.geolocation.getCurrentPosition(position => {
+    // sur l'objet position on recupere la latitude et la longitude 
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    // appel de la fonction fetch via la fonction url
+    // asynchrone : tant que les données ne sont pas disponibles la suite n'est pas executé
+    url(latitude, longitude);
+    //loca commune
+    let urlCommune = `https://geo.api.gouv.fr/communes?lat=${latitude}&lon=${longitude}&fields=code,nom,codesPostaux,surface,population,centre,contour`
+    fetch(urlCommune)
+    .then(res=>{
+        return res.json()
+    })
+    .then(rep=>{
+        addVille(rep[0].nom,rep[0].codesPostaux[0])
+    })
+});
+/** recupération des données open meteo via fonction fetch/json
+@param {number} latitude 
+@param {number} longitude 
+*/
+function url(latitude, longitude) { 
+// recuperation des données au format json
+fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=weather_code,temperature_2m,precipitation,is_day,snowfall,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=weather_code,temperature_2m,rain,cloud_cover,wind_speed_80m,wind_direction_80m,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,snowfall_sum&timezone=auto`)
+.then(data =>{
+    return data.json()
+})
+.then(weather =>{
+    // temps en direct
+    background(weather.current.weather_code)
+    tempsDuJour(weather.current.weather_code)
+    temperatureDuJour(weather.current.temperature_2m)
+    directionVent(weather.current.wind_direction_10m)
+    vitesseVent(weather.current.wind_speed_10m)
+
+    // temps par heure
+    tempsParHeure(weather.hourly)
+
+    // temps pour les 6 prochains jours
+    dailyPicto(weather.daily.weather_code)
+    tempsParJour(weather.daily)
+})
+}
+
+let vide = document.querySelector(".vide2")
+
+function addVille(X,Y) {
+    vide.innerHTML = `<p>${Y} ${X}</p>` 
 }
