@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <section class="grid">
+            <div class="gridContainer">
+                <div class="dayTime raduis glass flex">
+                    <div class="flex">
+                        <div class="date"><p></p></div>
+                        <div class="heure"><p></p></div>
+                    </div>
+                </div>
+                <div class="vide glass raduis"></div>
+                <div class="jourNuit raduis glass">
+                    <div id="moment" class=""></div>
+                </div>
+                <div id="currentWeather" class="currentWeather raduis glass flex">
+                    <p class="tempsActuel"></p>
+                    <div class="pictoWeather"></div>
+                    <p class="temperatureActuelle"></p>
+                </div>
+                <div class="vide2 raduis glass"></div>
+                <div class="boussole raduis glass flex">
+                    <div class="compassArrow flex"><div class="arrow flex"><img src="./img/compass-arrow.png" alt=""></div></div>
+                    <p class="vitesseVent"></p>
+                </div>
+                <div class="weatherPerHour raduis">                    
+                    <div class="carouselSlides parHeure glass raduis">
+                    </div>
+                </div>
+                <div class="weatherPerDay">
+                    <div class="carouselSlides parJour raduis glass">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <script src="./app.js" defer></script>
+    </body>
+</html>

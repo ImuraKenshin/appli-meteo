@@ -1,0 +1,475 @@
+/* GENERAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.glass{
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.29);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(0px);
+-webkit-backdrop-filter: blur(0px);
+border: 1px solid rgba(255, 255, 255, 0.44);
+}
+.glassItem{
+    /* From https://css.glass */
+background: rgba(201, 198, 198, 0.22);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(0px);
+-webkit-backdrop-filter: blur(0px);
+border: 1px solid rgba(201, 198, 198, 0.44);
+}
+
+
+.raduis{
+    border-radius: 20px;
+}
+
+/* grid */
+.gridContainer {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 16px 16px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "dayTime dayTime currentWeather currentWeather currentWeather vide2 vide2"
+      "dayTime dayTime currentWeather currentWeather currentWeather boussole boussole"
+      "dayTime dayTime currentWeather currentWeather currentWeather boussole boussole"
+      "dayTime dayTime currentWeather currentWeather currentWeather boussole boussole"
+      "vide jourNuit currentWeather currentWeather currentWeather boussole boussole"
+      "vide jourNuit currentWeather currentWeather currentWeather boussole boussole"
+      "weatherPerHour weatherPerHour weatherPerHour weatherPerHour weatherPerHour weatherPerHour weatherPerHour"
+      "weatherPerHour weatherPerHour weatherPerHour weatherPerHour weatherPerHour weatherPerHour weatherPerHour"
+      "weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay"
+      "weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay"
+      "weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay"
+      "weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay weatherPerDay";
+      height: 100vh;
+      padding: 16px;
+}
+  
+.vide2 { grid-area: vide2;
+}
+  
+.dayTime { grid-area: dayTime;
+}
+  
+.vide { grid-area: vide;
+}
+  
+.jourNuit { grid-area: jourNuit;
+}
+  
+.currentWeather { grid-area: currentWeather;
+}
+  
+.boussole { grid-area: boussole;
+    gap: 10px;
+}
+  
+.weatherPerHour { grid-area: weatherPerHour;
+    overflow-x: scroll; 
+    scroll-snap-type: x mandatory;
+    scrollbar-color: rgb(134, 134, 134) rgb(225, 225, 225);
+    scrollbar-width: thin;
+}
+  
+.weatherPerDay { grid-area: weatherPerDay;
+    overflow-x: scroll; 
+    scroll-snap-type: x mandatory;
+    scrollbar-color: rgb(134, 134, 134) rgb(225, 225, 225);
+    scrollbar-width: thin;
+}
+.bgOrageux{
+    background-image: url(./img/thunder.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgPluvieux{
+    background-image: url(./img/rain.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgCouvert{
+    background-image: url(./img/suncloud.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgNuageux{
+    background-image: url(./img/cloud.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgSoleil{
+    background-image: url(./img/sun.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgNeigeux{
+    background-image: url(./img/snow.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* dayTime */
+.dayTime>div{
+    width: 100%;
+    align-content: space-evenly;
+    text-align: center;
+}
+.dayTime>div>div{
+    width: 100%;
+}
+.date{
+    color: #343553;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+.heure{
+    color: #343553;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* jourNuit */
+.iconeJour{
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    background-image: url(./img/daynight-pictos.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.iconeNuit{
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    background-image: url(./img/daynight-pictos.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -160px 0;
+}
+/* currentWeather */
+.currentWeather{
+    text-align: center;
+    justify-content: center;
+    align-content: space-evenly;
+}
+.currentWeather p{
+    width: 100%;
+}
+.tempsActuel{
+    color: #343553;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.pictoWeather{
+    width: 200px;
+    height: 200px;
+}
+.orageux{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+}
+
+.pluvieux{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -202px;
+}
+
+.couvert{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -405px;
+}
+
+.nuageux{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -600px;
+}
+
+.soleil{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -1010px;
+}
+.neigeux{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -1210px;
+}
+
+
+.temperatureActuelle{
+    color: #343553;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* boussole */
+
+
+.compassArrow{
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+    background-image: url(./img/compass.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.arrow{
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    rotate: 0deg;
+    width: 100%;
+}
+.vitesseVent{
+    width: 100%;
+    color: #231D17;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+/* weatherPerHour */
+
+.carouselSlides{
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap:16px;
+    width: fit-content;
+    height: 100%;
+}
+.carouselItem{
+    width: 100px;
+    scroll-snap-align: start;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+}
+.slide{
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.picto{
+    width: 20px;
+    height: 20px;
+}
+.pictoTemp{
+    width: 20px;
+    height: 20px;
+}
+.pictoPara{
+    width: 20px;
+    height: 20px;
+}
+
+/* weatherPerDay */
+
+.dayContainer{
+    width: 295px;
+    border-radius: 10px;
+    justify-content: center;
+    align-content: space-evenly;
+}
+.pictoPetit{
+    width: 100px;
+    height: 100px;
+}
+.orageuxPetit{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+}
+
+.pluvieuxPetit{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 calc(-202px/2);
+}
+
+.couvertPetit{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 calc(-405px/2);
+}
+
+.nuageuxPetit{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 calc(-600px/2);
+}
+
+.venteuxPetit{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 calc(-800px/2);
+}
+
+.soleilPetit{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 calc(-1010px/2);
+}
+.neigeuxPetit{
+    background-image: url(./img/pictos-weather.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 calc(-1210px/2);
+}
+.dayDate{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343553;
+    width: 100%;
+    text-align: center;
+}
+.dayTempMax{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343553;
+    width: 100%;
+    text-align: center;
+}
+.dayTempMin{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #231D17;
+    width: 100%;
+    text-align: center;
+}
+
+@media all and (max-width : 1000px){
+    .gridContainer {  display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 16px 16px;
+        width: 100%;
+        height: 100%;
+        grid-auto-flow: row;
+        grid-template-areas:
+          "dayTime dayTime vide2 vide2"
+          "dayTime dayTime boussole boussole"
+          "dayTime dayTime boussole boussole"
+          "dayTime dayTime boussole boussole"
+          "vide jourNuit boussole boussole"
+          "currentWeather currentWeather currentWeather currentWeather"
+          "currentWeather currentWeather currentWeather currentWeather"
+          "currentWeather currentWeather currentWeather currentWeather"
+          "currentWeather currentWeather currentWeather currentWeather"
+          "weatherPerHour weatherPerHour weatherPerHour weatherPerHour"
+          "weatherPerHour weatherPerHour weatherPerHour weatherPerHour"
+          "weatherPerDay weatherPerDay weatherPerDay weatherPerDay"
+          "weatherPerDay weatherPerDay weatherPerDay weatherPerDay"
+          "weatherPerDay weatherPerDay weatherPerDay weatherPerDay";
+      }
+
+      /* boussole */
+
+    .boussole { grid-area: boussole;
+        gap: 0px;
+    }
+
+    .compassArrow{
+        width: 380px;
+        height: 380px;
+    }
+
+        /* weatherPerHour*/
+    .carouselItem{
+        width: 200px;
+    }
+}
+
+@media all and (max-width : 1200px){
+    .jourNuit{
+        display: flex;
+        align-items: center;
+    }
+    .iconeJour{
+        width: 100px;
+        height: 100px;
+    }
+    .iconeNuit{
+        width: 100px;
+        height: 100px;
+    }
+
+}
+
+@media all and (max-width : 500px){
+    .gridContainer {  display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 16px 16px;
+        width: 100%;
+        height: 100%;
+        grid-auto-flow: row;
+        grid-template-areas:
+          "dayTime dayTime"
+          "dayTime dayTime"
+          "vide jourNuit"
+          "currentWeather currentWeather"
+          "currentWeather currentWeather"
+          "currentWeather currentWeather"
+          "currentWeather currentWeather"
+          "vide2 vide2"
+          "boussole boussole"
+          "boussole boussole"
+          "weatherPerHour weatherPerHour"
+          "weatherPerHour weatherPerHour"
+          "weatherPerDay weatherPerDay"
+          "weatherPerDay weatherPerDay"
+          "weatherPerDay weatherPerDay";
+    }
+        /* jourNuit */
+    .jourNuit{
+        display: flex;
+        align-items: center;
+    }
+
+        /* boussole*/
+    .boussole { grid-area: boussole;
+        gap: 16px;
+    }
+
+    .compassArrow{
+        width: 300px;
+        height: 300px;
+    }
+
+        /* weatherPerHour*/
+    .carouselItem{
+        width: 300px;
+    }
+      
+}
