@@ -378,6 +378,26 @@ border: 1px solid rgba(201, 198, 198, 0.44);
     text-align: center;
 }
 
+/*
+***************vide*********************
+*/
+.vide{
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+.vide p{
+    width: 100%;
+    font-size: 16px;
+}
+.vide a{
+    text-decoration: none;
+    color: #570404;
+}
+.vide a:hover{
+    color: #37A942;
+}
+
 @media all and (max-width : 1000px){
     .gridContainer {  display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
